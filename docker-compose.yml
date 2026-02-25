@@ -11,9 +11,9 @@ services:
     ports:
       - "9200:9200"
     volumes:
-      - ./config:/etc/opencloud
-      - ./data:/var/lib/opencloud
-      - /volume1/MyFiles:/volume1/MyFiles
+      - ./config:/etc/opencloud:z
+      - ./data:/var/lib/opencloud:z
+      - /volume1/MyFiles:/volume1/MyFiles:z
     extra_hosts:
       - "dxp2800-0aef.tail10d5bf.ts.net:127.0.0.1"
     entrypoint: /bin/sh
