@@ -13,8 +13,6 @@ services:
     volumes:
       - ./config:/etc/opencloud
       - ./data:/var/lib/opencloud
-      - ./config:/app/config
-      - ./data:/app/data
       - /volume1/MyFiles:/volume1/MyFiles
     extra_hosts:
       - "dxp2800-0aef.tail10d5bf.ts.net:127.0.0.1"
@@ -23,12 +21,3 @@ services:
     user: "1000:1000"
     networks:
       - opencloud_opencloud-net
-
-networks:
-  opencloud_opencloud-net:
-    external: true
-    name: opencloud_opencloud-net
-
-volumes:
-  opencloud-config:
-  opencloud-data:   
