@@ -21,3 +21,9 @@ services:
     user: "1000:1000"
     networks:
       - opencloud_opencloud-net
+      
+networks:
+  opencloud_opencloud-net:
+    external: true
+    name: opencloud_opencloud-net   
+
