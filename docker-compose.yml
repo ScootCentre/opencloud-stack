@@ -24,12 +24,12 @@ services:
     command: -c "opencloud init || true; opencloud server"
     user: "1000:1000"
     networks:
-      - opencloud-net
+      - opencloud_opencloud-net
 
 networks:
   opencloud-net:
     external: true
-    name: opencloud-net
+    name: opencloud_opencloud-net
 
 volumes:
   opencloud-config:
