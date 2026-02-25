@@ -11,6 +11,8 @@ services:
     ports:
       - "9200:9200"
     volumes:
+      - ./config:/etc/opencloud
+      - ./data:/var/lib/opencloud
       - ./config:/app/config
       - ./data:/app/data
       - /volume1/MyFiles:/volume1/MyFiles
