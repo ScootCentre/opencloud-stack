@@ -3,19 +3,34 @@ services:
     image: opencloudeu/opencloud:latest
     container_name: opencloud
     restart: unless-stopped
+    environment:
+      - OC_URL=https://dxp2800-0aef.tail10d5bf.ts.net
+      - OC_INSECURE=true
+      - PROXY_TLS=false
+      - PROXY_HTTP_ADDR=0.0.0.0:9200
+      - OC_CONFIG_DIR=/app/config
+      - OC_DATA_DIR=/app/data
+      - LOG_LEVEL=info
+      - LOG_PRETTY=true
+    ports:
+      - "9200:9200"
     volumes:
-      - /app/config:/etc/opencloud
-      - /app/data:/var/lib/opencloud
-    env_file:
-      - .env
+      - ./config:/app/config
+      - ./data:/app/data
+      - /volume1/MyFiles:/volume1/MyFiles
+    extra_hosts:
+      - "dxp2800-0aef.tail10d5bf.ts.net:127.0.0.1"
+    entrypoint: /bin/sh
+    command: -c "opencloud init || true; opencloud server"
+    user: "1000:1000"
     networks:
-      - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.opencloud.rule=Host(`dxp2800-0aef.tail10d5bf.ts.net`)"
-      - "traefik.http.routers.opencloud.entrypoints=https"
-      - "traefik.http.services.opencloud.loadbalancer.server.port=9200"
+      - opencloud-net
 
 networks:
-  proxy:
-    external: true   
+  opencloud-net:
+    external: true
+    name: opencloud-net
+
+volumes:
+  opencloud-config:
+  opencloud-data:   
