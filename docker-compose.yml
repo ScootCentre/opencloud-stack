@@ -8,10 +8,6 @@ services:
       - OC_INSECURE=true
       - PROXY_TLS=false
       - PROXY_HTTP_ADDR=0.0.0.0:9200
-      - OC_CONFIG_DIR=/app/config
-      - OC_DATA_DIR=/app/data
-      - LOG_LEVEL=info
-      - LOG_PRETTY=true
     ports:
       - "9200:9200"
     volumes:
