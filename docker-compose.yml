@@ -8,6 +8,7 @@ services:
     volumes:
       - ./config:/etc/opencloud
       - ./data:/var/lib/opencloud
+      - /volume2/docker/dockhand:/app/data
       - /volume1/MyFiles:/volume1/MyFiles
     env_file:
       - .env
