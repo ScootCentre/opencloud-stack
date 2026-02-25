@@ -3,13 +3,6 @@ services:
     image: opencloudeu/opencloud:latest
     container_name: opencloud
     restart: unless-stopped
-    environment:
-      - OC_URL=https://dxp2800-0aef.tail10d5bf.ts.net
-      - OC_INSECURE=true
-      - PROXY_TLS=false
-      - PROXY_HTTP_ADDR=0.0.0.0:9200
-      - IDM_ADMIN_PASSWORD=2369Home # 🔥 Required for init!
-      - OC_DOMAIN=dxp2800-0aef.tail10d5bf.ts.net
     ports:
       - "9200:9200"
     volumes:
@@ -17,7 +10,7 @@ services:
       - ./data:/var/lib/opencloud
       - /volume1/MyFiles:/volume1/MyFiles
     env_file:
-      - .env   
+      - .env
     extra_hosts:
       - "dxp2800-0aef.tail10d5bf.ts.net:127.0.0.1"
     entrypoint: /bin/sh
