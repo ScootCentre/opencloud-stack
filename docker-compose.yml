@@ -27,7 +27,7 @@ services:
       - opencloud_opencloud-net
 
 networks:
-  opencloud-net:
+  opencloud_opencloud-net:
     external: true
     name: opencloud_opencloud-net
 
