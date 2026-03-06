@@ -13,6 +13,7 @@ services:
       - .env
     extra_hosts:
       - "dxp2800-0aef.tail10d5bf.ts.net:127.0.0.1"
+      - "dxp2800-0aef.tail10d5bf.ts.net:100.119.201.59"  # Your Tailscale IP   
     entrypoint: /bin/sh
     command: -c "opencloud init || true; opencloud server"    
     user: "1000:1000"
